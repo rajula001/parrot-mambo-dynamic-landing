@@ -1,26 +1,26 @@
-# 🛸 Vision-Based Dynamic Landing on a Moving Platform (Parrot Mambo Drone)
+#  Vision-Based Dynamic Landing on a Moving Platform (Parrot Mambo Drone)
 
 This project demonstrates a **vision-guided autonomous landing system** developed in **MATLAB/Simulink** for the **Parrot Mambo drone**.  
 The drone identifies a **moving RGB landing platform** (mounted on a line-following robot) and performs a **controlled descent and landing** using **computer-vision processing**, **state-machine logic**, and a **Simulink-based flight control system**.
 
 ---
 
-## 🎯 Objective
+## Objective
 Unlike a normal stationary landing, this experiment focuses on **dynamic landing** — where both the drone and the landing platform are in motion.  
 The goal was to detect the red landing pad in real time, maintain stability, and land smoothly using visual feedback without the need for external sensors or motion capture.
 
 ---
 
-## 🧩 System Architecture
+## System Architecture
 ![Main Block Diagram](Docs/images/block_diagram_main.png)
 
 The complete system is divided into four major subsystems:
 
-### 1️⃣ Flight Commands
+### 1. Flight Commands
 - Provides high-level input commands (altitude, forward velocity, yaw rate) using a **Signal Builder** block.
 - These commands mimic pilot inputs or autonomous mission scripts.
 
-### 2️⃣ Flight Control System
+### 2️. Flight Control System
 <img width="2048" height="981" alt="image" src="https://github.com/user-attachments/assets/3ef58e62-550a-4d36-bd86-30f66ded4bb4" />
 - Contains the **Control System**, **Image Processing System**, and **Stateflow decision logic**.
 - Receives:
@@ -29,19 +29,19 @@ The complete system is divided into four major subsystems:
 - Outputs motor actuator commands that control the drone.
 - Built for **auto code generation** using Embedded Coder (optional).
 
-### 3️⃣ Simulation Model
+### 3️. Simulation Model
 - Models the **drone physics**, **environment**, and **sensor dynamics**.
 - Includes the **Nonlinear Airframe** block and **Environment models** for wind, gravity, and lighting.
 - Allows realistic simulation of drone motion and sensor behavior before deploying to hardware.
 
-### 4️⃣ Flight Visualization
+### 4️. Flight Visualization
 - Uses the **Simulink 3D Animation toolbox** to visualize drone movement and platform motion in real time.
 
 ---
 
-## 🧠 How It Works
+##  How It Works
 
-### 🔹 Step 1: Image Acquisition and Preprocessing
+###  Step 1: Image Acquisition and Preprocessing
 ![Image Processing System](Docs/images/image_processing.png)
 - The drone’s camera captures a YUV image stream.
 - Converted to RGB using the Parrot Minidrone support package.
@@ -49,7 +49,7 @@ The complete system is divided into four major subsystems:
 - Binary images (white = red region) are filtered to remove noise.
 <img width="2048" height="985" alt="image" src="https://github.com/user-attachments/assets/6ef562ab-7d53-49b6-bd96-f706e456231f" />
 
-### 🔹 Step 2: Platform Detection Logic
+###  Step 2: Platform Detection Logic
 ![Path Detection](Docs/images/path_detection.png)
 - The binary image is divided into **9 regions** (Left/Centre/Right × Top/Mid/Bot).
 - Pixel counts are computed in each region.
@@ -60,7 +60,7 @@ The complete system is divided into four major subsystems:
 - Once confirmed, it raises `startDescendingFlag = true`.
 <img width="2048" height="1013" alt="image" src="https://github.com/user-attachments/assets/bdaff3db-04b2-4896-bc32-691abef96618" />
 
-### 🔹 Step 3: Stateflow Decision Logic
+###  Step 3: Stateflow Decision Logic
 ![Decision Chart](Docs/images/decision_chart.png)
 - Core flight behavior is implemented as a **Stateflow chart** with states:
   - **Forward**
@@ -73,14 +73,14 @@ The complete system is divided into four major subsystems:
 - When `isLanded = true`, motor thrust = 0, ending simulation.
 <img width="2047" height="1050" alt="image" src="https://github.com/user-attachments/assets/755c0d76-3a7d-4866-825c-2a6d6603b6da" />
 
-### 🔹 Step 4: Simulation & Visualization
+###  Step 4: Simulation & Visualization
 - Entire control loop runs in Simulink simulation.
 - Flight trajectory and landing are visualized using **3D Animation viewer**.
 - The final simulation video demonstrates the drone detecting the platform, aligning, and descending steadily onto it.
 
 ---
 
-## 🧰 Tools & Technologies
+## Tools & Technologies
 | Category | Tools / Libraries Used |
 |-----------|------------------------|
 | **Software Environment** | MATLAB R2023b / R2024a |
@@ -93,12 +93,12 @@ The complete system is divided into four major subsystems:
 
 ---
 
-## 📊 Results
-- ✅ Reliable platform detection from various angles and distances  
-- ✅ Dynamic descent triggered after consistent detection  
-- ✅ Smooth, stable touchdown with minimal drift  
-- ⚙️ Average descent speed reduced by 50% during landing  
-- 🧪 Video demonstration confirms accuracy and robustness
+##  Results
+-  Reliable platform detection from various angles and distances  
+-  Dynamic descent triggered after consistent detection  
+-  Smooth, stable touchdown with minimal drift  
+-  Average descent speed reduced by 50% during landing  
+-  Video demonstration confirms accuracy and robustness
 
 
 
