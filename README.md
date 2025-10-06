@@ -100,7 +100,7 @@ The complete system is divided into four major subsystems:
 -  Average descent speed reduced by 50% during landing  
 -  Video demonstration confirms accuracy and robustness
 
-
+## See `Project_video.mp4` for a run (stored with **Git LFS**; download to view).
 
 
 
