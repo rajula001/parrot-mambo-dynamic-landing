@@ -21,13 +21,13 @@ The complete system is divided into four major subsystems:
 - These commands mimic pilot inputs or autonomous mission scripts.
 
 ### 2️. Flight Control System
-<img width="2048" height="981" alt="image" src="https://github.com/user-attachments/assets/3ef58e62-550a-4d36-bd86-30f66ded4bb4" />
 - Contains the **Control System**, **Image Processing System**, and **Stateflow decision logic**.
 - Receives:
   - Drone sensor data (altitude, orientation, velocities)
   - Image data from the downward-facing camera
 - Outputs motor actuator commands that control the drone.
 - Built for **auto code generation** using Embedded Coder (optional).
+<img width="2048" height="1045" alt="image" src="https://github.com/user-attachments/assets/5633a8f3-ade8-429e-8662-9e4f14562e4c" />
 
 ### 3️. Simulation Model
 - Models the **drone physics**, **environment**, and **sensor dynamics**.
