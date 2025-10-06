@@ -106,4 +106,3 @@ The complete system is divided into four major subsystems:
 
 ---
 
-## 📦 Repository Structure
